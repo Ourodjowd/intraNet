@@ -7,6 +7,7 @@ export default defineConfig({
   server: {
     port: process.env.PORT ? parseInt(process.env.PORT) : 5173,
     host: true,
+    allowedHosts: ['intranet-k2m6.onrender.com'],
   },
   preview: {
     port: process.env.PORT ? parseInt(process.env.PORT) : 4173,
