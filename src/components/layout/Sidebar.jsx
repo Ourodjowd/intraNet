@@ -7,7 +7,7 @@ import {
 import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 
-const Sidebar = ({ onLogout }) => {
+const Sidebar = ({ onLogout, isMobileMenuOpen, closeMobileMenu }) => {
     const [collapsed, setCollapsed] = useState(false);
 
     const menuItems = [
@@ -22,17 +22,17 @@ const Sidebar = ({ onLogout }) => {
     ];
 
     return (
-        <aside className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
+        <aside className={`sidebar ${collapsed ? 'collapsed' : ''} ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
             {/* Logo */}
             <div className="sidebar-logo">
                 {!collapsed && <h2>CNT / EPT</h2>}
                 <button
-                    className="collapse-btn"
-                    onClick={() => setCollapsed(c => !c)}
-                    aria-label={collapsed ? 'Déplier le menu' : 'Réduire le menu'}
-                    title={collapsed ? 'Déplier' : 'Réduire'}
+                     className="collapse-btn"
+                     onClick={() => setCollapsed(c => !c)}
+                     aria-label={collapsed ? 'Déplier le menu' : 'Réduire le menu'}
+                     title={collapsed ? 'Déplier' : 'Réduire'}
                 >
-                    {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+                     {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
                 </button>
             </div>
 
@@ -45,6 +45,7 @@ const Sidebar = ({ onLogout }) => {
                         end={item.path === '/'}
                         className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}
                         title={collapsed ? item.label : undefined}
+                        onClick={closeMobileMenu}
                     >
                         <span className="nav-icon" aria-hidden="true">{item.icon}</span>
                         {!collapsed && <span className="nav-label">{item.label}</span>}
@@ -56,7 +57,10 @@ const Sidebar = ({ onLogout }) => {
             <div className="sidebar-footer">
                 <button
                     className="logout-btn"
-                    onClick={onLogout}
+                    onClick={() => {
+                        closeMobileMenu();
+                        onLogout();
+                    }}
                     title={collapsed ? 'Déconnexion' : undefined}
                 >
                     <LogOut size={20} />

@@ -176,4 +176,7 @@
     .owner-cell, .size-cell { display: none; }
     .docs-actions { flex-direction: column; align-items: stretch; }
     .upload-btn { margin-left: 0; }
+    .docs-table-container {
+        overflow-x: auto;
+    }
 }

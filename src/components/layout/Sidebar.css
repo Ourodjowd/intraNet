@@ -139,3 +139,31 @@
 }
 
 .sidebar.collapsed .logout-btn { justify-content: center; }
+
+/* ── Mobile Responsive Sidebar ── */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform var(--transition-speed) ease-in-out;
+        z-index: 100;
+    }
+    
+    .sidebar.mobile-open {
+        transform: translateX(0);
+    }
+    
+    /* Ignore the collapsed width on mobile */
+    .sidebar.collapsed {
+        transform: translateX(-100%);
+        width: 240px;
+    }
+    
+    .sidebar.collapsed.mobile-open {
+        transform: translateX(0);
+    }
+    
+    /* Hide the collapse button since we toggle sidebar via header hamburger */
+    .collapse-btn {
+        display: none !important;
+    }
+}

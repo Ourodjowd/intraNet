@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from 'react';
-import { Search, Bell, User, X, ArrowRight } from 'lucide-react';
+import { Search, Bell, User, X, ArrowRight, Menu } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useSearch } from '../../hooks/useSearch';
 import './Header.css';
 
-const Header = ({ notifications = [], onMarkAllRead }) => {
+const Header = ({ notifications = [], onMarkAllRead, toggleMobileMenu }) => {
     const navigate = useNavigate();
     const { query, setQuery, results, clearSearch, isOpen } = useSearch();
     const searchRef = useRef(null);
@@ -50,6 +50,10 @@ const Header = ({ notifications = [], onMarkAllRead }) => {
 
     return (
         <header className="header">
+            {/* Hamburger menu button for mobile */}
+            <button className="mobile-menu-btn" onClick={toggleMobileMenu} aria-label="Ouvrir le menu">
+                <Menu size={20} />
+            </button>
             {/* ── Recherche Globale ── */}
             <div className="search-wrapper" ref={searchRef}>
                 <div className="search-bar">
