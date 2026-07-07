@@ -1,0 +1,194 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.profile-header-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.profile-cover {
+    height: 150px;
+    background: linear-gradient(135deg, var(--primary-color), #004494);
+}
+
+.profile-main-info {
+    padding: 0 3rem 2rem;
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-top: -40px;
+}
+
+.profile-avatar-container {
+    position: relative;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    border: 5px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    box-shadow: var(--shadow);
+}
+
+.change-photo-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-text-info {
+    flex: 1;
+}
+
+.profile-text-info h1 {
+    margin: 0;
+    color: #1a1a1a;
+    font-size: 1.8rem;
+}
+
+.profile-role {
+    color: #666;
+    font-weight: 500;
+    margin: 0.2rem 0 0.8rem;
+}
+
+.profile-labels {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.label-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.label-badge.primary {
+    background-color: #e6f0ff;
+    color: var(--primary-color);
+}
+
+.label-badge.secondary {
+    background-color: #eafff0;
+    color: #28a745;
+}
+
+.edit-profile-btn {
+    background-color: white;
+    border: 1.5px solid #ddd;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all var(--transition-speed);
+}
+
+.edit-profile-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.bio-text {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+.info-item svg {
+    color: var(--primary-color);
+    background-color: #f0f7ff;
+    padding: 10px;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+.info-item strong {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.info-item p {
+    font-weight: 500;
+    color: #333;
+}
+
+.account-details,
+.settings-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.acc-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.acc-item svg {
+    color: #888;
+}
+
+.settings-btn {
+    background: none;
+    border: 1px solid #eee;
+    padding: 0.8rem;
+    border-radius: var(--border-radius);
+    text-align: left;
+    cursor: pointer;
+    font-weight: 500;
+    color: #666;
+    transition: all var(--transition-speed);
+}
+
+.settings-btn:hover {
+    background-color: #f8f9fa;
+    border-color: #ddd;
+    color: var(--primary-color);
+}

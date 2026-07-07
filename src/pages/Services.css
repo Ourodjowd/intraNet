@@ -1,0 +1,131 @@
+.services-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: transform var(--transition-speed), border-color var(--transition-speed);
+    border: 1px solid transparent;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.service-header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #f0f7ff;
+    color: var(--primary-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #1a1a1a;
+}
+
+.service-desc {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    min-height: 3rem;
+}
+
+.service-info {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+}
+
+.info-item strong {
+    color: #444;
+}
+
+.info-item span {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.dept-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0;
+    font-size: 0.9rem;
+    transition: gap var(--transition-speed);
+}
+
+.dept-btn:hover {
+    gap: 0.8rem;
+}
+
+.org-chart-banner {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    color: white;
+    box-shadow: var(--shadow);
+}
+
+.banner-content h2 {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.banner-content p {
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+.banner-content .btn-primary {
+    background-color: white;
+    color: #1e7e34;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.banner-content .btn-primary:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
