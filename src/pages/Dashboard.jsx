@@ -25,7 +25,7 @@ const Dashboard = () => {
     return (
         <div className="dashboard-container">
             <div className="welcome-banner">
-                <h1>Bonjour, Jean Dupont</h1>
+                <h1>Bonjour, Mr. Folly</h1>
                 <p>Bienvenue sur votre espace de travail CNT/EPT. Voici les dernières actualités de l'organisation.</p>
             </div>
 

@@ -4,10 +4,10 @@ import './Profile.css';
 
 const Profile = () => {
     const user = {
-        name: 'Jean Dupont',
-        role: 'Administrateur / Directeur Général',
+        name: 'Mr. Folly',
+        role: 'Administrateur ',
         dept: 'Direction Générale',
-        email: 'j.dupont@cnt-ept.org',
+        email: '',
         phone: '+221 33 800 01 01',
         address: 'Dakar, Sénégal',
         joined: 'Janvier 2020',
