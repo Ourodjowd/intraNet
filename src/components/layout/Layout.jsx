@@ -3,7 +3,7 @@ import Sidebar from './Sidebar';
 import Header from './Header';
 import './Layout.css';
 
-const Layout = ({ children, onLogout }) => {
+const Layout = ({ children, onLogout, currentUser }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const toggleMobileMenu = () => setIsMobileMenuOpen(prev => !prev);
@@ -11,9 +11,9 @@ const Layout = ({ children, onLogout }) => {
 
     return (
         <div className={`layout-container ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
-            <Sidebar onLogout={onLogout} isMobileMenuOpen={isMobileMenuOpen} closeMobileMenu={closeMobileMenu} />
+            <Sidebar onLogout={onLogout} currentUser={currentUser} isMobileMenuOpen={isMobileMenuOpen} closeMobileMenu={closeMobileMenu} />
             <div className="main-content">
-                <Header toggleMobileMenu={toggleMobileMenu} />
+                <Header toggleMobileMenu={toggleMobileMenu} currentUser={currentUser} />
                 {isMobileMenuOpen && (
                     <div className="sidebar-overlay" onClick={closeMobileMenu} />
                 )}

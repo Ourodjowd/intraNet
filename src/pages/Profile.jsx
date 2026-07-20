@@ -2,16 +2,17 @@ import React from 'react';
 import { User, Mail, Phone, MapPin, Shield, Clock, Edit3, Camera } from 'lucide-react';
 import './Profile.css';
 
-const Profile = () => {
-    const user = {
-        name: 'Mr. Folly',
-        role: 'Administrateur ',
-        dept: 'Direction Générale',
-        email: '',
-        phone: '+221 33 800 01 01',
-        address: 'Dakar, Sénégal',
-        joined: 'Janvier 2020',
-        bio: 'Directeur Général passionné par la transformation numérique et l\'optimisation des processus organisationnels au sein de la CNT/EPT.'
+const Profile = ({ currentUser }) => {
+    // Données réelles du user connecté (fallback si prop absente)
+    const user = currentUser ?? {
+        nom: '—',
+        role: '—',
+        dept: '—',
+        email: '—',
+        phone: '—',
+        address: '—',
+        joined: '—',
+        bio: '',
     };
 
     return (
@@ -26,7 +27,7 @@ const Profile = () => {
                         <button className="change-photo-btn"><Camera size={18} /></button>
                     </div>
                     <div className="profile-text-info">
-                        <h1>{user.name}</h1>
+                        <h1>{user.nom}</h1>
                         <p className="profile-role">{user.role}</p>
                         <div className="profile-labels">
                             <span className="label-badge primary">{user.dept}</span>

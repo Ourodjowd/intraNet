@@ -2,7 +2,23 @@ import React from 'react';
 import { Newspaper, FileText, Users, ExternalLink, Calendar, ChevronRight } from 'lucide-react';
 import './Dashboard.css';
 
-const Dashboard = () => {
+/** Retourne le prénom à partir d'un nom complet stocké en NOM Prénom */
+function getFirstName(nomComplet) {
+    if (!nomComplet) return '';
+    // Format "NOM TOÏ Prénom" → on prend le dernier mot comme prénom
+    const parts = nomComplet.trim().split(/\s+/);
+    return parts[parts.length - 1];
+}
+
+/** Salutation selon l'heure locale */
+function getGreeting() {
+    const h = new Date().getHours();
+    if (h < 12) return 'Bonjour';
+    if (h < 18) return 'Bon après-midi';
+    return 'Bonsoir';
+}
+
+const Dashboard = ({ currentUser }) => {
     const stats = [
         { label: 'Annonces Récentes', value: '12', icon: <Newspaper color="#0056b3" />, bg: '#e6f0ff' },
         { label: 'Documents Partagés', value: '45', icon: <FileText color="#28a745" />, bg: '#eafff0' },
@@ -25,8 +41,8 @@ const Dashboard = () => {
     return (
         <div className="dashboard-container">
             <div className="welcome-banner">
-                <h1>Bonjour, Mr. Folly</h1>
-                <p>Bienvenue sur votre espace de travail CNT/EPT. Voici les dernières actualités de l'organisation.</p>
+                <h1>{getGreeting()}, {getFirstName(currentUser?.nom)} 👋</h1>
+                <p>Bienvenue sur votre espace de travail CNT/EPT — <strong>{currentUser?.role}</strong>. Voici les dernières actualités de l'organisation.</p>
             </div>
 
             <div className="stats-grid">

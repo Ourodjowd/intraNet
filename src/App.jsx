@@ -13,40 +13,44 @@ import VieAuBureau from './pages/VieAuBureau';
 import './index.css';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
-  // Check for existing session
+  // Restore session from localStorage
   useEffect(() => {
-    const authStatus = localStorage.getItem('cnc_ept_auth');
-    if (authStatus === 'true') {
-      setIsAuthenticated(true);
+    const saved = localStorage.getItem('cnc_ept_user');
+    if (saved) {
+      try {
+        setCurrentUser(JSON.parse(saved));
+      } catch {
+        localStorage.removeItem('cnc_ept_user');
+      }
     }
   }, []);
 
-  const handleLogin = () => {
-    setIsAuthenticated(true);
-    localStorage.setItem('cnc_ept_auth', 'true');
+  const handleLogin = (user) => {
+    setCurrentUser(user);
+    localStorage.setItem('cnc_ept_user', JSON.stringify(user));
   };
 
   const handleLogout = () => {
-    setIsAuthenticated(false);
-    localStorage.removeItem('cnc_ept_auth');
+    setCurrentUser(null);
+    localStorage.removeItem('cnc_ept_user');
   };
 
-  if (!isAuthenticated) {
+  if (!currentUser) {
     return <Login onLogin={handleLogin} />;
   }
 
   return (
     <Router>
-      <Layout onLogout={handleLogout}>
+      <Layout onLogout={handleLogout} currentUser={currentUser}>
         <Routes>
-          <Route path="/"               element={<Dashboard />} />
+          <Route path="/"               element={<Dashboard currentUser={currentUser} />} />
           <Route path="/news"           element={<News />} />
           <Route path="/services"       element={<Services />} />
           <Route path="/documents"      element={<Documents />} />
           <Route path="/contacts"       element={<Contacts />} />
-          <Route path="/profile"        element={<Profile />} />
+          <Route path="/profile"        element={<Profile currentUser={currentUser} />} />
           <Route path="/onboarding"     element={<Onboarding />} />
           <Route path="/vie-au-bureau"  element={<VieAuBureau />} />
           <Route path="*"               element={<Navigate to="/" />} />

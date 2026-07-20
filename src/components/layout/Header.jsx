@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSearch } from '../../hooks/useSearch';
 import './Header.css';
 
-const Header = ({ notifications = [], onMarkAllRead, toggleMobileMenu }) => {
+const Header = ({ notifications = [], onMarkAllRead, toggleMobileMenu, currentUser }) => {
     const navigate = useNavigate();
     const { query, setQuery, results, clearSearch, isOpen } = useSearch();
     const searchRef = useRef(null);
@@ -126,11 +126,13 @@ const Header = ({ notifications = [], onMarkAllRead, toggleMobileMenu }) => {
                 </button>
                 <div className="user-profile">
                     <div className="user-info">
-                        <span className="user-name">Jean Dupont</span>
-                        <span className="user-role">Administrateur</span>
+                        <span className="user-name">{currentUser?.nom ?? '—'}</span>
+                        <span className="user-role">{currentUser?.role ?? '—'}</span>
                     </div>
-                    <div className="avatar" aria-hidden="true">
-                        <User size={20} />
+                    <div className="avatar" aria-hidden="true" title={currentUser?.nom}>
+                        {currentUser?.nom
+                            ? currentUser.nom.trim().split(/\s+/).pop()[0].toUpperCase()
+                            : <User size={20} />}
                     </div>
                 </div>
             </div>
